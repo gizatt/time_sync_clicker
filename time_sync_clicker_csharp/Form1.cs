@@ -14,6 +14,7 @@ namespace time_sync_clicker_csharp
     public partial class Form1 : Form
     {
         private System.DateTime click_time;
+        private uint buffer_time;
         public Form1()
         {
             InitializeComponent();
@@ -21,18 +22,20 @@ namespace time_sync_clicker_csharp
             //this.TransparencyKey = Color.LimeGreen;
             
             this.click_time = DateTime.MinValue;
+            this.buffer_time = 5;
+            textBoxBufferSecs.Text = this.buffer_time.ToString();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             // Figure out when to click; want to click at an
-            // even 10 second interval more than 3 seconds in
+            // even 10 second interval more than 5 seconds in
             // the future.
             var now = DateTime.Now;
 
             int next_10s_secs = 10 - (now.Second % 10);
             var new_click_time = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
-            if (next_10s_secs <= 3) {
+            while (next_10s_secs <= this.buffer_time) {
                 next_10s_secs += 10;
             }
             this.click_time = new_click_time.AddSeconds(next_10s_secs);
@@ -84,6 +87,40 @@ namespace time_sync_clicker_csharp
                 public int x;
                 public int y;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            uint userVal;
+            if (uint.TryParse(textBoxBufferSecs.Text, out userVal))
+            {
+                this.buffer_time = userVal;
+            }
+            else
+            {
+                textBoxBufferSecs.Text = this.buffer_time.ToString();
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_time_to_click_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_cancel_Click(object sender, EventArgs e)
+        {
+            this.click_time = DateTime.MinValue;
+            label_time_to_click.Text = "Canceled.";
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -38,6 +38,9 @@
             this.textBoxBufferSecs = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button_cancel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label_offset = new System.Windows.Forms.Label();
+            this.timer_timesync = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btn_schedule_click
@@ -55,7 +58,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Info;
-            this.label8.Location = new System.Drawing.Point(22, 128);
+            this.label8.Location = new System.Drawing.Point(22, 143);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 8;
@@ -65,7 +68,7 @@
             // label_time_to_click
             // 
             this.label_time_to_click.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label_time_to_click.Location = new System.Drawing.Point(86, 128);
+            this.label_time_to_click.Location = new System.Drawing.Point(86, 143);
             this.label_time_to_click.Name = "label_time_to_click";
             this.label_time_to_click.Size = new System.Drawing.Size(83, 13);
             this.label_time_to_click.TabIndex = 9;
@@ -130,11 +133,38 @@
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(41, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Offset:";
+            // 
+            // label_offset
+            // 
+            this.label_offset.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label_offset.Location = new System.Drawing.Point(86, 126);
+            this.label_offset.Name = "label_offset";
+            this.label_offset.Size = new System.Drawing.Size(83, 13);
+            this.label_offset.TabIndex = 15;
+            this.label_offset.Text = "<>";
+            // 
+            // timer_timesync
+            // 
+            this.timer_timesync.Enabled = true;
+            this.timer_timesync.Interval = 10000;
+            this.timer_timesync.Tick += new System.EventHandler(this.timer_timesync_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(190, 148);
+            this.ClientSize = new System.Drawing.Size(190, 165);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label_offset);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxBufferSecs);
@@ -161,6 +191,9 @@
         private System.Windows.Forms.TextBox textBoxBufferSecs;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_cancel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label_offset;
+        private System.Windows.Forms.Timer timer_timesync;
     }
 }
 
